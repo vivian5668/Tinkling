@@ -1,0 +1,61 @@
+body, html {
+	margin: 0;
+}
+
+.box {
+	height: 400px;
+
+
+}
+
+body {
+	background-image: url("../img/bg_wood.jpg");
+	background-size: cover;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+	grid-template-rows: 500px;
+	
+}
+
+.btn-small {
+    height: 40px;
+}
+
+.box {
+	/*use flex box to make circles jump up*/
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+
+/*	transition-property: align-items;
+	transition-duration: 5s;
+	transition-timing-function: ease;*/
+	-webkit-animation: topmove 5s;
+	animation: topmove 5s;
+	
+	-webkit-animation-timing-function: ease;
+	animation-timing-function: ease;
+}
+
+
+/*.box:hover {*/
+	/*-webkit-animation: topmove 5s;
+	animation: topmove 5s;
+	
+	-webkit-animation-timing-function: ease;
+	animation-timing-function: ease;*/
+	/*animation-delay: 0s;*/
+	/*align-items: flex-start;*/
+	/*-webkit-animation-iteration-count: infinite;*/
+}
+
+@keyframes topmove {
+	0% {align-items: flex-end;}
+	25% {align-items: flex-center;}
+	50% {align-items: flex-start;}
+	75% {align-items: flex-center;}
+	100% {align-items: flex-end;}
+}
