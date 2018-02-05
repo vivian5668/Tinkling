@@ -28,22 +28,26 @@ var dotClicked = function () {
 
 var checkNote = function () {
 	//check  for match once a note is played, stop the game if there is an un-match
-	if (notesGiven.length > notesPlayed.length) {	
+	if (notesGiven.length >= notesPlayed.length) {	
 		for (var i = 0; i < notesPlayed.length; i++) {
 			if (notesPlayed[i] !== notesGiven[i]) {
 				fail();
 				console.log('fail');
-				return;
+				// return;
 			} 
 		} 
 	}
 	//if all previous tests pass, check for final match
 	if (notesGiven.length === notesPlayed.length) {
+		var matchCount = 0;
 		for (var i = 0; i < notesGiven.length; i++) {
 			if (notesPlayed[i] === notesGiven[i]) {
-				win();
-				console.log('win');
+				matchCount ++;
 		} 
+		if (matchCount === 3) {
+			win();
+			console.log('win');
+		}	
 	  } 
 	}
 }
