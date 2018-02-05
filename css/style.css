@@ -48,7 +48,7 @@ body {
 	  -webkit-animation: dotmove 1.5s ;
 	  animation: dotmove 1.5s;
 	  animation-timing-function: ease;
-	  animation-iteration-count: 0;
+	  animation-iteration-count: 1;
     }
 
 .box #n1 {
