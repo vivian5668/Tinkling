@@ -48,37 +48,37 @@ body {
 	  -webkit-animation: dotmove 1.5s ;
 	  animation: dotmove 1.5s;
 	  animation-timing-function: ease;
-	  animation-iteration-count: 3;
+	  animation-iteration-count: 0;
     }
 
-.box .b2 {
+.box #n1 {
 	animation-delay: 0s
 }
 
-.box .b3 {
+.box #n2 {
 	animation-delay: .1s
 }
 
-.box .b4 {
+.box #n3 {
 	animation-delay: .2s
 }
 
-.box .b5 {
+.box #n4 {
 	animation-delay: .3s
 }
 
-.box .b6 {
+.box #n5 {
 	animation-delay: .4s
 }
 
-.box .b7 {
+.box #n6 {
 	animation-delay: .5s
 }
 
-.box .b8 {
+.box #n7 {
 	animation-delay: .6s
 }
 
-.box .b9 {
+.box #n8 {
 	animation-delay: .7s
 }
