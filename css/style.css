@@ -25,37 +25,60 @@ body {
 }
 
 .box {
-	/*use flex box to make circles jump up*/
+	text-align: center;
 	display: flex;
 	align-items: flex-end;
-	justify-content: center;
-
-/*	transition-property: align-items;
-	transition-duration: 5s;
-	transition-timing-function: ease;*/
-	-webkit-animation: topmove 5s;
-	animation: topmove 5s;
-	
-	-webkit-animation-timing-function: ease;
-	animation-timing-function: ease;
 }
 
 
-/*.box:hover {*/
-	/*-webkit-animation: topmove 5s;
-	animation: topmove 5s;
-	
-	-webkit-animation-timing-function: ease;
-	animation-timing-function: ease;*/
-	/*animation-delay: 0s;*/
-	/*align-items: flex-start;*/
-	/*-webkit-animation-iteration-count: infinite;*/
+
+@-webkit-keyframes dotmove {
+    0%   {top: 0px;}
+    50%  {top: -400px;}
+    100% {top: 0px;}
 }
 
-@keyframes topmove {
-	0% {align-items: flex-end;}
-	25% {align-items: flex-center;}
-	50% {align-items: flex-start;}
-	75% {align-items: flex-center;}
-	100% {align-items: flex-end;}
+.circle {
+      width: 45px;
+      height: 45px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      position: relative;
+	  -webkit-animation: dotmove 1.5s ;
+	  animation: dotmove 1.5s;
+	  animation-timing-function: ease;
+	  animation-iteration-count: infinite;
+    }
+
+.box .b2 {
+	animation-delay: 0s
+}
+
+.box .b3 {
+	animation-delay: .1s
+}
+
+.box .b4 {
+	animation-delay: .2s
+}
+
+.box .b5 {
+	animation-delay: .3s
+}
+
+.box .b6 {
+	animation-delay: .4s
+}
+
+.box .b7 {
+	animation-delay: .5s
+}
+
+.box .b8 {
+	animation-delay: .6s
+}
+
+.box .b9 {
+	animation-delay: .7s
 }
