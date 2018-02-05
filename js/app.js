@@ -5,6 +5,11 @@ var notesGiven = [];
 var notesPlayed = [];
 var level = 1;
 
+
+// var n8Audio = new Audio('sounds/n1.mp3');
+var loadMusic = new Audio('sounds/opening.mp3');
+
+
 var giveNotes = function () {
 	var rand = Math.floor(Math.random() * 8);
 	notesGiven = allNotes;
@@ -12,7 +17,6 @@ var giveNotes = function () {
 		notesGiven.splice(rand - i, 1);
 	}
 }
-
 
 var startGame = function () {
 	giveNotes();
@@ -23,6 +27,7 @@ var dotClicked = function () {
 	//dot jump
 	notesPlayed.push(this.id);
 	console.log('notesPlayed: ' + notesPlayed);
+	document.getElementById('s' + this.id).play(); //to grab audio id
 	checkNote();
 }
 
@@ -72,6 +77,6 @@ $(document).ready(function() {
 	$('#n7').on('click', dotClicked);
 	$('#n8').on('click', dotClicked);
 	$('#start').on('click', startGame);
-
-
+	loadMusic.play();
+	
 })
