@@ -91,5 +91,10 @@ $(document).ready(function() {
 	setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
 	setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
 	setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
-
+ 	$('.slider').slider();
+ 	$('.modal').modal({
+ 		inDuration: 1000, // Transition in duration
+        outDuration: 200, // Transition out duration
+ 	});
+ 	setTimeout(function() {$('#modal1').modal('open');}, 2000);
 })
