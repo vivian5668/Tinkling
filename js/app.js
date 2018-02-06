@@ -21,6 +21,10 @@ var giveNotes = function () {
 var startGame = function () {
 	giveNotes();
 	console.log('notesGiven: ' + notesGiven)
+	for (var i = 0; i < 9; i++) {
+		$('#n' + i).removeClass('dotjump');
+	}
+	console.log($('#n1').classList)
 }
 
 var dotClicked = function () {
@@ -28,6 +32,7 @@ var dotClicked = function () {
 	notesPlayed.push(this.id);
 	console.log('notesPlayed: ' + notesPlayed);
 	document.getElementById('s' + this.id).play(); //to grab audio id
+	this.classList.add('dotjump');
 	checkNote();
 }
 
@@ -78,5 +83,13 @@ $(document).ready(function() {
 	$('#n8').on('click', dotClicked);
 	$('#start').on('click', startGame);
 	loadMusic.play();
-	
+	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
+	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
+	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
+	setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
+	setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
+	setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
+	setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
+	setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
+
 })

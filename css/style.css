@@ -45,13 +45,16 @@ body {
       -moz-border-radius: 50%;
       border-radius: 50%;
       position: relative;
-	  -webkit-animation: dotmove 1.5s ;
-	  animation: dotmove 1.5s;
-	  animation-timing-function: ease;
-	  animation-iteration-count: 1;
     }
 
-.box #n1 {
+.dotjump {
+	  -webkit-animation: dotmove 1s ;
+	  animation: dotmove 1s;
+	  animation-timing-function: ease;
+	  animation-iteration-count: 1;
+}
+
+/*.box #n1 {
 	animation-delay: 0s
 }
 
@@ -81,4 +84,4 @@ body {
 
 .box #n8 {
 	animation-delay: .7s
-}
+}*/
