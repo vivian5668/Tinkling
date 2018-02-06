@@ -49,8 +49,8 @@ body {
     }
 
 .dotjump {
-	  -webkit-animation: dotmove 1.5s ;
-	  animation: dotmove 1.5s;
+	  -webkit-animation: dotmove 1s ;
+	  animation: dotmove 1s;
 	  animation-timing-function: ease;
 	  animation-iteration-count: 1;
 }

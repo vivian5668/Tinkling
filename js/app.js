@@ -4,6 +4,7 @@ var allNotes = $('.circle').map(function() {return this.id;}).toArray();
 var notesGiven = [];
 var notesPlayed = [];
 var level = 1;
+var winNum = 0;
 
 
 // var n8Audio = new Audio('sounds/n1.mp3');
@@ -12,21 +13,25 @@ var loadMusic = new Audio('sounds/opening.mp3');
 
 var giveNotes = function (levelNum) {
 	var rand = Math.floor(Math.random() * 8);
-	notesGiven = allNotes;
-	var levelNum = level;
+	notesGiven = allNotes.slice();
+	console.log('allNotes: ' + allNotes)
 	for (var i = 0; i <= levelNum + 3; i++) {
 		notesGiven.splice(rand - i, 1);
 	}
+
+	console.log('notesGiven: ' + notesGiven);
 }
 
-var startGame = function () {
-	giveNotes();
-	console.log('notesGiven: ' + notesGiven)
+
+
+var clearAnimationClass = function () {
 	for (var i = 0; i < 9; i++) {
 		$('#n' + i).removeClass('dotjump');
 	}
-	console.log($('#n1').classList)
+	// console.log($('#n1').classList)
 }
+
+
 
 var dotClicked = function () {
 	//dot jump
@@ -34,6 +39,7 @@ var dotClicked = function () {
 	console.log('notesPlayed: ' + notesPlayed);
 	document.getElementById('s' + this.id).play(); //to grab audio id
 	this.classList.add('dotjump');
+	//every time a note is played, check if the note is correct. 
 	checkNote();
 }
 
@@ -55,20 +61,48 @@ var checkNote = function () {
 			if (notesPlayed[i] === notesGiven[i]) {
 				matchCount ++;
 		} 
-		if (matchCount === 3) {
+		if (matchCount === level + 2) {
 			win();
+			winNum ++;
 			console.log('win');
 		}	
 	  } 
 	}
 }
 
-var fail = function () {
+var levelUp = function () {
+	if (winNum === 1) {
+		//show next level button
+		$('#start').addClass('hide');
+		$('#next').removeClass('hide');
+		//clear notes given
+		notesGiven = [];
+		notesPlayed = [];
+		//clear notes played
+		//give new notes
+		level ++;
+		startGame();
+		console.log('level: ' + level)
+		console.log('new notes given: ' + notesGiven);
+	}
+}
 
+
+var fail = function () {
+	level = 1;
+	winNum = 0;
+	alert('fail');
 }
 
 var win = function () {
+	winNum ++;
+	levelUp();
+}
 
+var startGame = function () {
+	clearAnimationClass();
+	giveNotes(level);
+	
 }
 
 
@@ -83,6 +117,7 @@ $(document).ready(function() {
 	$('#n7').on('click', dotClicked);
 	$('#n8').on('click', dotClicked);
 	$('#start').on('click', startGame);
+	$('#next').on('click', levelUp);
 	loadMusic.play();
 	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
 	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
