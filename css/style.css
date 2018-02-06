@@ -34,7 +34,7 @@ body {
 
 @-webkit-keyframes dotmove {
     0%   {top: 0px;}
-    50%  {top: -350px;}
+    50%  {top: -200px;}
     100% {top: 0px;}
 }
 
@@ -48,10 +48,14 @@ body {
     }
 
 .dotjump {
-	  -webkit-animation: dotmove 1s ;
-	  animation: dotmove 1s;
+	  -webkit-animation: dotmove 1.5s ;
+	  animation: dotmove 1.5s;
 	  animation-timing-function: ease;
 	  animation-iteration-count: 1;
+}
+
+body {
+	font-family: 'Nanum Pen Script', cursive;
 }
 
 /*.box #n1 {
