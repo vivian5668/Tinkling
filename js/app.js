@@ -100,5 +100,5 @@ $(document).ready(function() {
  		inDuration: 1000, // Transition in duration
         outDuration: 200, // Transition out duration
  	});
- 	setTimeout(function() {$('#modal1').modal('open');}, 2000);
+ 	// setTimeout(function() {$('#modal1').modal('open');}, 2000);
 })
