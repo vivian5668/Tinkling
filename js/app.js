@@ -10,10 +10,11 @@ var level = 1;
 var loadMusic = new Audio('sounds/opening.mp3');
 
 
-var giveNotes = function () {
+var giveNotes = function (levelNum) {
 	var rand = Math.floor(Math.random() * 8);
 	notesGiven = allNotes;
-	for (var i = 0; i <= level + 3; i++) {
+	var levelNum = level;
+	for (var i = 0; i <= levelNum + 3; i++) {
 		notesGiven.splice(rand - i, 1);
 	}
 }
@@ -83,14 +84,14 @@ $(document).ready(function() {
 	$('#n8').on('click', dotClicked);
 	$('#start').on('click', startGame);
 	loadMusic.play();
-	setTimeout(function() {$('#n1').addClass('dotjump');}, 2100);
-	setTimeout(function() {$('#n2').addClass('dotjump');}, 2200);
-	setTimeout(function() {$('#n3').addClass('dotjump');}, 2300);
-	setTimeout(function() {$('#n4').addClass('dotjump');}, 2400);
-	setTimeout(function() {$('#n5').addClass('dotjump');}, 2500);
-	setTimeout(function() {$('#n6').addClass('dotjump');}, 2700);
-	setTimeout(function() {$('#n7').addClass('dotjump');}, 2800);
-	setTimeout(function() {$('#n8').addClass('dotjump');}, 2900);
+	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
+	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
+	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
+	setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
+	setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
+	setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
+	setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
+	setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
  	$('.slider').slider({
  		height: 300,
  		interval: 3000,
@@ -99,5 +100,5 @@ $(document).ready(function() {
  		inDuration: 1000, // Transition in duration
         outDuration: 200, // Transition out duration
  	});
- 	// setTimeout(function() {$('#modal1').modal('open');}, 2000);
+ 	setTimeout(function() {$('#modal1').modal('open');}, 2000);
 })
