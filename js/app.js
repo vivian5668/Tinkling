@@ -15,7 +15,9 @@ var giveNotes = function (levelNum) {
 	var rand = Math.floor(Math.random() * 8);
 	notesGiven = allNotes.slice();
 	console.log('allNotes: ' + allNotes)
-	for (var i = 0; i <= levelNum + 3; i++) {
+
+	//8 notes in total, level 1 takes out 5 and leave 3 in notesGiven, level 2 take out 4.....
+	for (var i = 0; i <= 5 - levelNum; i++) {
 		notesGiven.splice(rand - i, 1);
 	}
 
@@ -71,19 +73,26 @@ var checkNote = function () {
 }
 
 var levelUp = function () {
-	if (winNum === 1) {
-		//show next level button
+	if (winNum > 0 && winNum < 5) {
 		$('#start').addClass('hide');
 		$('#next').removeClass('hide');
-		//clear notes given
 		notesGiven = [];
 		notesPlayed = [];
-		//clear notes played
-		//give new notes
 		level ++;
 		startGame();
 		console.log('level: ' + level)
 		console.log('new notes given: ' + notesGiven);
+	}
+
+	if (winNum >= 5) {
+		//final Win banner
+		//re-start the game
+		$('#start').addClass('hide');
+		$('#next').removeClass('hide');
+		notesGiven = [];
+		notesPlayed = [];
+		level ++;
+		startGame();
 	}
 }
 
