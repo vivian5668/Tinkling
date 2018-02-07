@@ -55,6 +55,14 @@ body {
 	  animation-iteration-count: 1;
 }
 
+#cathappy, catsad {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    width: 50%;
+    max-width: 170px;
+}
+
 /*body {
 	font-family: 'Nanum Pen Script', cursive;
 }*/

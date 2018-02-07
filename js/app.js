@@ -113,7 +113,9 @@ var checkNote = function () {
 }
 
 var levelUp = function () {
+	
 	$('#next').removeClass('pulse');
+	$('#next').addClass('disabled');
 	if (winNum > 0 && winNum < 5) {
 		
 		notesGiven = [];
@@ -151,6 +153,7 @@ var win = function () {
 	$('#start').addClass('hide');
 	$('#next').removeClass('hide');
 	$('#next').addClass('pulse');
+	$('#next').removeClass('disabled');
 }
 
 var startGame = function () {
@@ -160,16 +163,21 @@ var startGame = function () {
 	
 }
 
-
+var addEventListnerToDot = function () {
+	for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).on('click', dotClicked);
+		}
+}
 
 $(document).ready(function() {
 	
-	$('#start').on('click', function () {
-		for (var i = 0; i <= allNotes.length; i++) {
-			$('#' + allNotes[i]).on('click', dotClicked);
-		}
-	startGame();
-	});
+	setTimeout(function(){  //delay the start button function for 2 secs to prevent user to activate game before instructions
+		$('#start').on('click', function () {
+			addEventListnerToDot();
+			startGame();
+			$('#start').addClass('disabled');
+		})	
+	}, 2000) 
 
 	$('#next').on('click', function() {
 		for (var i = 0; i <= allNotes.length; i++) {
