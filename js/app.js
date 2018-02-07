@@ -90,6 +90,7 @@ var checkNote = function () {
 		for (var i = 0; i < notesPlayed.length; i++) {
 			if (notesPlayed[i] !== notesGiven[i]) {
 				fail();
+				return;
 				
 			} 
 		} 
@@ -101,12 +102,13 @@ var checkNote = function () {
 			if (notesPlayed[i] === notesGiven[i]) {
 				matchCount ++;
 		} 
+	}
 		if (matchCount === level + 2) {
 			win();
 			console.log('win')
 			winNum ++;
 		}	
-	  } 
+	  
 	}
 }
 
@@ -138,12 +140,12 @@ var fail = function () {
 	level = 1;
 	winNum = 0;
 	document.getElementById('sadsound').play();
-	$('#catsad').remove(); // remove it
-	$('#catimg').append('<img class="hide responsive-img" src="img/sad.gif">'); // reload it
-	$('#catimg').append('<img>');
+	$('#catsad').remove(); // remove gif and re-add to make gif start at beginning each time
+	$('#catimg').append('<img class="responsive-img" id="catsad" src="img/sad.gif">'); // reload it
+	
 	console.log('fail')
 	// $('#catsad').addClass('hide');
-	$('#catsad').removeClass('hide');
+
 
 	for (var i = 0; i <= allNotes.length; i++) {
 			$('#' + allNotes[i]).off('click', dotClicked);
@@ -151,14 +153,14 @@ var fail = function () {
 
 	setTimeout(function() {
 		console.log('here!')
-		$('#catsad').addClass('hide');
+		$('#catsad').remove();
 		$('#start').removeClass('disabled');
 		$('#start').addClass('pulse');
 		$('#start').removeClass('hide');
 		// $('#next').removeClass('disabled');
 		$('#next').addClass('hide');
 		
-	},5600)
+	},5200)
 }
 
 var win = function () {
