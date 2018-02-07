@@ -11,7 +11,7 @@ var winNum = 0;
 // var n8Audio = new Audio('sounds/n1.mp3');
 var loadMusic = new Audio('sounds/opening.mp3');
 
-var time = 1000;
+var time = 900;
 var element = null;
 var noteId = '';
 var id = '';
@@ -19,12 +19,16 @@ var id = '';
 var makeTimeoutFunction = function(id) {
 	return function() {
 		$('#' + id).addClass('dotjump');
+		var removeDotJump = function() {$('#' + id).removeClass('dotjump')};
+		setTimeout(removeDotJump, 900);
+		console.log('YO!')
 		document.getElementById('s' + id).play();
 	}
 };
 
 var giveNotes = function (levelNum) {
 	var rand = Math.floor(Math.random() * 8);
+	time = 900;
 	notesGiven = Array.from(allNotes);
 
 	//8 notes in total, level 1 takes out 5 and leave 3 in notesGiven, level 2 take out 4.....
@@ -34,8 +38,11 @@ var giveNotes = function (levelNum) {
 
 	notesGiven.forEach(function(index) {
 		setTimeout(makeTimeoutFunction(index), time);
-		time += 1000;
+		time += 900;
 	});
+
+	console.log("I am in defer")
+
 
 	//make the givenNotes jump when notes are given, and play music
 	// for (var i = 0; i < notesGiven.length; i++) {
@@ -54,17 +61,13 @@ var giveNotes = function (levelNum) {
 	// 	// $('#' + notesGiven[i]).addClass('dotjump');
 	// 	// document.getElementById('s' + notesGiven[i]).play();
 	// }
-
-	notesGiven.forEach(function(item) {
-
-	});
-
 }
 
 
 
 var clearAnimationClass = function () {
 	for (var i = 0; i < 9; i++) {
+		console.log(i);
 		$('#n' + i).removeClass('dotjump');
 	}
 	// console.log($('#n1').classList)
@@ -110,9 +113,9 @@ var checkNote = function () {
 }
 
 var levelUp = function () {
+	$('#next').removeClass('pulse');
 	if (winNum > 0 && winNum < 5) {
-		$('#start').addClass('hide');
-		$('#next').removeClass('hide');
+		
 		notesGiven = [];
 		notesPlayed = [];
 		level ++;
@@ -123,7 +126,7 @@ var levelUp = function () {
 
 	if (winNum >= 5) {
 		//final Win banner
-		//re-start the game
+		//re-start the game !!!!this is not restarting the game!!! need work
 		$('#start').addClass('hide');
 		$('#next').removeClass('hide');
 		notesGiven = [];
@@ -142,10 +145,16 @@ var fail = function () {
 
 var win = function () {
 	winNum ++;
-	levelUp();
+	for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).off('click', dotClicked);
+		}
+	$('#start').addClass('hide');
+	$('#next').removeClass('hide');
+	$('#next').addClass('pulse');
 }
 
 var startGame = function () {
+	$('#start').removeClass('pulse')
 	clearAnimationClass();
 	giveNotes(level);
 	
@@ -156,33 +165,36 @@ var startGame = function () {
 $(document).ready(function() {
 	
 	$('#start').on('click', function () {
-		$('#n1').on('click', dotClicked);
-		$('#n2').on('click', dotClicked);
-		$('#n3').on('click', dotClicked);
-		$('#n4').on('click', dotClicked);
-		$('#n5').on('click', dotClicked);
-		$('#n6').on('click', dotClicked);
-		$('#n7').on('click', dotClicked);
-		$('#n8').on('click', dotClicked);
-		startGame();
+		for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).on('click', dotClicked);
+		}
+	startGame();
 	});
-	$('#next').on('click', levelUp);
-	// loadMusic.play();
-	// setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
-	// setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
-	// setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
-	// setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
-	// setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
-	// setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
-	// setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
-	// setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
+
+	$('#next').on('click', function() {
+		for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).on('click', dotClicked);
+		}
+	levelUp();
+	});
+
+	loadMusic.play();
+	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
+	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
+	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
+	setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
+	setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
+	setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
+	setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
+	setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
  	$('.slider').slider({
  		height: 300,
  		interval: 3000,
  	});
  	$('.modal').modal({
- 		inDuration: 1000, // Transition in duration
+ 		inDuration: 800, // Transition in duration
         outDuration: 200, // Transition out duration
+        complete: function() { $('#start').addClass('pulse') }
  	});
- 	// setTimeout(function() {$('#modal1').modal('open');}, 2000);
+ 	setTimeout(function() {$('#modal1').modal('open');}, 2000);
 })
