@@ -1,6 +1,7 @@
 
 //list all ids of notes in an array, i.e. [n1, n2, n3, n4]
-var allNotes = $('.circle').map(function() {return this.id;}).toArray();
+var allNotes = ['n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8'];
+// allNotes = allNotes.toArray();
 var notesGiven = [];
 var notesPlayed = [];
 var level = 1;
@@ -10,18 +11,54 @@ var winNum = 0;
 // var n8Audio = new Audio('sounds/n1.mp3');
 var loadMusic = new Audio('sounds/opening.mp3');
 
+var time = 1000;
+var element = null;
+var noteId = '';
+var id = '';
+
+var makeTimeoutFunction = function(id) {
+	return function() {
+		$('#' + id).addClass('dotjump');
+		document.getElementById('s' + id).play();
+	}
+};
 
 var giveNotes = function (levelNum) {
 	var rand = Math.floor(Math.random() * 8);
-	notesGiven = allNotes.slice();
-	console.log('allNotes: ' + allNotes)
+	notesGiven = Array.from(allNotes);
 
 	//8 notes in total, level 1 takes out 5 and leave 3 in notesGiven, level 2 take out 4.....
 	for (var i = 0; i <= 5 - levelNum; i++) {
 		notesGiven.splice(rand - i, 1);
 	}
 
-	console.log('notesGiven: ' + notesGiven);
+	notesGiven.forEach(function(index) {
+		setTimeout(makeTimeoutFunction(index), time);
+		time += 1000;
+	});
+
+	//make the givenNotes jump when notes are given, and play music
+	// for (var i = 0; i < notesGiven.length; i++) {
+
+	// 	setTimeout(function() {
+	// 		id = 's' + notesGiven[noteId];
+	// 		console.log('id: ' + id);
+	// 		element = document.getElementById(id);
+	// 		console.log(element);
+
+	// 		$('#' + id).addClass('dotjump');
+	// 		element.play();
+	// 		noteId++;
+	// 	}, time);
+	// 	time += 1000;
+	// 	// $('#' + notesGiven[i]).addClass('dotjump');
+	// 	// document.getElementById('s' + notesGiven[i]).play();
+	// }
+
+	notesGiven.forEach(function(item) {
+
+	});
+
 }
 
 
@@ -117,25 +154,28 @@ var startGame = function () {
 
 
 $(document).ready(function() {
-	$('#n1').on('click', dotClicked);
-	$('#n2').on('click', dotClicked);
-	$('#n3').on('click', dotClicked);
-	$('#n4').on('click', dotClicked);
-	$('#n5').on('click', dotClicked);
-	$('#n6').on('click', dotClicked);
-	$('#n7').on('click', dotClicked);
-	$('#n8').on('click', dotClicked);
-	$('#start').on('click', startGame);
+	
+	$('#start').on('click', function () {
+		$('#n1').on('click', dotClicked);
+		$('#n2').on('click', dotClicked);
+		$('#n3').on('click', dotClicked);
+		$('#n4').on('click', dotClicked);
+		$('#n5').on('click', dotClicked);
+		$('#n6').on('click', dotClicked);
+		$('#n7').on('click', dotClicked);
+		$('#n8').on('click', dotClicked);
+		startGame();
+	});
 	$('#next').on('click', levelUp);
-	loadMusic.play();
-	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
-	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
-	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
-	setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
-	setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
-	setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
-	setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
-	setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
+	// loadMusic.play();
+	// setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
+	// setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
+	// setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
+	// setTimeout(function() {$('#n4').addClass('dotjump');}, 400);
+	// setTimeout(function() {$('#n5').addClass('dotjump');}, 500);
+	// setTimeout(function() {$('#n6').addClass('dotjump');}, 700);
+	// setTimeout(function() {$('#n7').addClass('dotjump');}, 800);
+	// setTimeout(function() {$('#n8').addClass('dotjump');}, 900);
  	$('.slider').slider({
  		height: 300,
  		interval: 3000,
