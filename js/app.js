@@ -21,7 +21,6 @@ var makeTimeoutFunction = function(id) {
 		$('#' + id).addClass('dotjump');
 		var removeDotJump = function() {$('#' + id).removeClass('dotjump')};
 		setTimeout(removeDotJump, 900);
-		console.log('YO!')
 		document.getElementById('s' + id).play();
 	}
 };
@@ -36,12 +35,13 @@ var giveNotes = function (levelNum) {
 		notesGiven.splice(rand - i, 1);
 	}
 
+	console.log('notesGiven: ' + notesGiven);
+
 	notesGiven.forEach(function(index) {
 		setTimeout(makeTimeoutFunction(index), time);
 		time += 900;
 	});
 
-	console.log("I am in defer")
 
 
 	//make the givenNotes jump when notes are given, and play music
@@ -67,7 +67,6 @@ var giveNotes = function (levelNum) {
 
 var clearAnimationClass = function () {
 	for (var i = 0; i < 9; i++) {
-		console.log(i);
 		$('#n' + i).removeClass('dotjump');
 	}
 	// console.log($('#n1').classList)
@@ -91,8 +90,7 @@ var checkNote = function () {
 		for (var i = 0; i < notesPlayed.length; i++) {
 			if (notesPlayed[i] !== notesGiven[i]) {
 				fail();
-				console.log('fail');
-				// return;
+				
 			} 
 		} 
 	}
@@ -105,58 +103,85 @@ var checkNote = function () {
 		} 
 		if (matchCount === level + 2) {
 			win();
+			console.log('win')
 			winNum ++;
-			console.log('win');
 		}	
 	  } 
 	}
 }
 
 var levelUp = function () {
-	
+	notesGiven = [];
+	notesPlayed = [];
+	$('#next').removeClass('disabled');
 	$('#next').removeClass('pulse');
 	$('#next').addClass('disabled');
 	if (winNum > 0 && winNum < 5) {
-		
-		notesGiven = [];
-		notesPlayed = [];
 		level ++;
 		startGame();
-		console.log('level: ' + level)
-		console.log('new notes given: ' + notesGiven);
 	}
 
-	if (winNum >= 5) {
-		//final Win banner
-		//re-start the game !!!!this is not restarting the game!!! need work
-		$('#start').addClass('hide');
-		$('#next').removeClass('hide');
-		notesGiven = [];
-		notesPlayed = [];
-		level ++;
-		startGame();
-	}
+	// if (winNum >= 5) {
+	// 	//final Win banner
+	// 	//re-start the game !!!!this is not restarting the game!!! need work
+	// 	$('#start').addClass('hide');
+	// 	$('#next').removeClass('hide');
+	// 	notesGiven = [];
+	// 	notesPlayed = [];
+	// 	level ++;
+	// 	startGame();
+	// }
 }
 
 
 var fail = function () {
 	level = 1;
 	winNum = 0;
-	alert('fail');
+	document.getElementById('sadsound').play();
+	$('#catsad').remove(); // remove it
+	$('#catimg').append('<img class="hide responsive-img" src="img/sad.gif">'); // reload it
+	$('#catimg').append('<img>');
+	console.log('fail')
+	// $('#catsad').addClass('hide');
+	$('#catsad').removeClass('hide');
+
+	for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).off('click', dotClicked);
+		}
+
+	setTimeout(function() {
+		console.log('here!')
+		$('#catsad').addClass('hide');
+		$('#start').removeClass('disabled');
+		$('#start').addClass('pulse');
+		$('#start').removeClass('hide');
+		// $('#next').removeClass('disabled');
+		$('#next').addClass('hide');
+		
+	},5600)
 }
 
 var win = function () {
+	document.getElementById('happysound').play();
+	$('#cathappy').removeClass('hide');
+	setTimeout(function() {
+		$('#cathappy').addClass('hide');
+	},3000)
+
 	winNum ++;
 	for (var i = 0; i <= allNotes.length; i++) {
 			$('#' + allNotes[i]).off('click', dotClicked);
 		}
 	$('#start').addClass('hide');
 	$('#next').removeClass('hide');
-	$('#next').addClass('pulse');
 	$('#next').removeClass('disabled');
+	$('#next').addClass('pulse');
 }
 
 var startGame = function () {
+	loadMusic.pause();
+	notesGiven = [];
+	notesPlayed = [];
 	$('#start').removeClass('pulse')
 	clearAnimationClass();
 	giveNotes(level);
@@ -180,10 +205,8 @@ $(document).ready(function() {
 	}, 2000) 
 
 	$('#next').on('click', function() {
-		for (var i = 0; i <= allNotes.length; i++) {
-			$('#' + allNotes[i]).on('click', dotClicked);
-		}
-	levelUp();
+		addEventListnerToDot();
+		levelUp();
 	});
 
 	loadMusic.play();

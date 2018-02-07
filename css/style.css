@@ -3,7 +3,7 @@ body, html {
 }
 
 .box {
-	height: 400px;
+	height: 350px;
 
 
 }
@@ -55,12 +55,20 @@ body {
 	  animation-iteration-count: 1;
 }
 
-#cathappy, catsad {
+#cathappy {
     position: absolute;
     left: 40%;
     top: 50%;
     width: 50%;
     max-width: 170px;
+}
+
+#catsad {
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    width: 70%;
+    max-width: 370px;
 }
 
 /*body {
