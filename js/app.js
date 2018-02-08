@@ -171,20 +171,24 @@ var win = function () {
 		$('#next').removeClass('disabled');
 		$('#next').addClass('pulse');
 
-		console.log('in winNum < 3')
 	} 
 	if (winNum >= 3) {
 
-		$('#finalwin').removeClass('hide');
+		$('#cathappy').addClass('hide');
+		$('#finalbg').addClass('falling');
 		setTimeout(function() {
-			$('#finalwin').addClass('hide');
+			$('#finalbg').removeClass('falling');
+		},3000)
+
+		$('#congrats').removeClass('hide');
+		setTimeout(function() {
+			$('#congrats').addClass('hide');
 		},3000)
 
 		level = 1;
 		winNum = 0;
 
-		console.log('reach high');
-		console.log('in winNum >= 3')
+		
 
 		for (var i = 0; i <= allNotes.length; i++) {
 			$('#' + allNotes[i]).off('click', dotClicked);
