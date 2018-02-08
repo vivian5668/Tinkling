@@ -103,7 +103,7 @@ body {
 	font-size: 22px;
 }
 
-@media (max-width: 370px){
+@media (max-width: 370px) {
 	#grid {
 	    -webkit-transform: rotate(90deg);
 	    -moz-transform: rotate(90deg);
@@ -133,6 +133,14 @@ body {
 	.modal { 
 	width: 75% !important; 
 	height: 75% !important; 
+	}
+	.dotjump {
+	  animation-timing-function: ease;
+	}
+	@-webkit-keyframes dotmove {
+    0%   {top: 0px;}
+    50%  {top: -165px;}
+    100% {top: 0px;}
 	}
 }
 
@@ -174,7 +182,7 @@ body {
 	}
 }
 
-@media (min-width: 415px) and (max-width: 570px){
+@media (min-width: 415px) and (max-width: 500px){
 	#grid {
 	    -webkit-transform: rotate(90deg);
 	    -moz-transform: rotate(90deg);
@@ -212,56 +220,42 @@ body {
 	}
 }
 
-@media (min-width: 570px) and (max-width: 625px){
-	#grid {
-	    -webkit-transform: rotate(90deg);
-	    -moz-transform: rotate(90deg);
-	    -o-transform: rotate(90deg);
-	    -ms-transform: rotate(90deg);
-	    transform: rotate(90deg);
-	    display: grid;
-		grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-		grid-template-rows: 500px;
-	}
+@media (min-width: 500px) and (max-width: 625px){
 	.circle {
       width: 40px;
       height: 40px;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
       position: relative;
-      top: 100px;
+    }
+     h1 {
+    	font-size: 45px;
+    }
+    h3 {
+    	font-size: 35px;
     }
     .modal { 
 	width: 65% !important; 
 	height: 75% !important; 
-}
+	}
     @-webkit-keyframes dotmove {
     0%   {top: 0px;}
     50%  {top: -230px;}
     100% {top: 0px;}
 	}
+	#grid {
+	    display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr;
+		grid-template-rows: 500px;
+	}
 }
 
 @media (min-width: 625px) and (max-width: 810px){
-	#grid {
-	    -webkit-transform: rotate(90deg);
-	    -moz-transform: rotate(90deg);
-	    -o-transform: rotate(90deg);
-	    -ms-transform: rotate(90deg);
-	    transform: rotate(90deg);
-	    display: grid;
-		grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-		grid-template-rows: 500px;
-	}
 	.circle {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       border-radius: 50%;
       position: relative;
-      top: 100px;
     }
     .modal { 
 	width: 50% !important; 
