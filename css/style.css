@@ -1,5 +1,6 @@
 body, html {
 	margin: 0;
+	/*position: relative;*/
 }
 
 .box {
@@ -40,7 +41,7 @@ body {
 
 @-webkit-keyframes dotmove {
     0%   {top: 0px;}
-    50%  {top: -200px;}
+    50%  {top: -260px;}
     100% {top: 0px;}
 }
 
@@ -62,17 +63,21 @@ body {
 
 #cathappy {
     position: absolute;
-    width: 50%;
-    left: 35%;
-    top: 50%;
+    width: 20%;
+    min-width: 200px;
+    left: 40%;
+    top: 45%;
     max-width: 250px;
 }
 
 #catsad {
     position: absolute;
-	left: 22%;
-    width: 70%;
-    max-width: 400px;
+	left: 30%;
+    width: 40%;
+    top: 38%;
+    min-width: 300px;
+    max-width: 350px;
+    /*max-width: 400px;*/
 }
 #finalwin {
     position: absolute;
