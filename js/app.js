@@ -26,41 +26,23 @@ var makeTimeoutFunction = function(id) {
 };
 
 var giveNotes = function (levelNum) {
-	var rand = Math.floor(Math.random() * 8);
-	time = 900;
-	notesGiven = Array.from(allNotes);
-
-	//8 notes in total, level 1 takes out 5 and leave 3 in notesGiven, level 2 take out 4.....
-	for (var i = 0; i <= 5 - levelNum; i++) {
-		notesGiven.splice(rand - i, 1);
+	var rand = Math.floor(Math.random()*8);
+	var newArray = Array.from(allNotes); //initially has 8 elements
+	//randomly delete one, store in temp , now 7 left
+	//add temp to notesGiven, then repeat
+	for (var i = 0; i < 2 + levelNum; i++) {
+		temp = newArray.splice(rand-i, 1);
+		notesGiven.push(temp);
 	}
 
 	console.log('notesGiven: ' + notesGiven);
+
+	time = 900;
 
 	notesGiven.forEach(function(index) {
 		setTimeout(makeTimeoutFunction(index), time);
 		time += 900;
 	});
-
-
-
-	//make the givenNotes jump when notes are given, and play music
-	// for (var i = 0; i < notesGiven.length; i++) {
-
-	// 	setTimeout(function() {
-	// 		id = 's' + notesGiven[noteId];
-	// 		console.log('id: ' + id);
-	// 		element = document.getElementById(id);
-	// 		console.log(element);
-
-	// 		$('#' + id).addClass('dotjump');
-	// 		element.play();
-	// 		noteId++;
-	// 	}, time);
-	// 	time += 1000;
-	// 	// $('#' + notesGiven[i]).addClass('dotjump');
-	// 	// document.getElementById('s' + notesGiven[i]).play();
-	// }
 }
 
 
@@ -88,7 +70,7 @@ var checkNote = function () {
 	//check  for match once a note is played, stop the game if there is an un-match
 	if (notesGiven.length >= notesPlayed.length) {	
 		for (var i = 0; i < notesPlayed.length; i++) {
-			if (notesPlayed[i] !== notesGiven[i]) {
+			if (notesPlayed[i] != notesGiven[i]) {
 				fail();
 				return;
 				
@@ -99,7 +81,7 @@ var checkNote = function () {
 	if (notesGiven.length === notesPlayed.length) {
 		var matchCount = 0;
 		for (var i = 0; i < notesGiven.length; i++) {
-			if (notesPlayed[i] === notesGiven[i]) {
+			if (notesPlayed[i] == notesGiven[i]) {
 				matchCount ++;
 		} 
 	}
