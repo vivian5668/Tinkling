@@ -80,7 +80,7 @@ body {
 
 #catsad {
     position: absolute;
-	left: 30%;
+	  left: 15%;
     width: 40%;
     top: 38%;
     min-width: 300px;
@@ -111,8 +111,8 @@ body {
 	    -ms-transform: rotate(90deg);
 	    transform: rotate(90deg);
 	    display: grid;
-		grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.1fr;
-		grid-template-rows: 500px;
+		  grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.1fr;
+		  grid-template-rows: 500px;
 	}
 	.circle {
       width: 35px;
@@ -135,7 +135,7 @@ body {
 	height: 75% !important; 
 	}
 	.dotjump {
-	  animation-timing-function: ease;
+	  animation-timing-function: linear;
 	}
 	@-webkit-keyframes dotmove {
     0%   {top: 0px;}
@@ -171,10 +171,14 @@ body {
     h3 {
     	font-size: 25px;
     }
-    .modal { 
-	width: 75% !important; 
-	height: 75% !important; 
-}
+  .modal { 
+    	width: 75% !important; 
+    	height: 75% !important; 
+    }
+  .dotjump {
+    animation-timing-function: linear;
+  }
+
     @-webkit-keyframes dotmove {
     0%   {top: 0px;}
     50%  {top: -165px;}
@@ -209,11 +213,14 @@ body {
     h3 {
     	font-size: 25px;
     }
-    .modal { 
-	width: 75% !important; 
-	height: 75% !important; 
-}
-    @-webkit-keyframes dotmove {
+  .modal { 
+    	width: 75% !important; 
+    	height: 75% !important; 
+    }
+  .dotjump {
+    animation-timing-function: linear;
+  }
+  @-webkit-keyframes dotmove {
     0%   {top: 0px;}
     50%  {top: -200px;}
     100% {top: 0px;}
@@ -257,7 +264,11 @@ body {
       border-radius: 50%;
       position: relative;
     }
-    .modal { 
+  #catsad {
+    position: absolute;
+    left: 25%;
+  }
+  .modal { 
 	width: 50% !important; 
 	height: 75% !important; 
 	}
@@ -273,6 +284,10 @@ body {
       border-radius: 50%;
       position: relative;
     }
+  #catsad {
+    position: absolute;
+    left: 30%;
+  }
 }
 
 @media (min-width: 1165px) {
