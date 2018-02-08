@@ -62,18 +62,17 @@ body {
 
 #cathappy {
     position: absolute;
-    left: 40%;
-    top: 50%;
     width: 50%;
-    max-width: 170px;
+    left: 35%;
+    top: 50%;
+    max-width: 250px;
 }
 
 #catsad {
     position: absolute;
-    left: 10%;
-    top: 40%;
+	left: 22%;
     width: 70%;
-    max-width: 370px;
+    max-width: 400px;
 }
 #finalwin {
     position: absolute;
@@ -86,6 +85,8 @@ body {
     width: 40%;
     min-width: 200px;
 }
+
+
 /*body {
 	font-family: 'Nanum Pen Script', cursive;
 }*/
