@@ -70,6 +70,13 @@ body {
     width: 70%;
     max-width: 370px;
 }
+#finalwin {
+    position: absolute;
+ /*   left: 10%;
+    top: 40%;
+    width: 70%;
+    max-width: 370px;*/
+}
 
 /*body {
 	font-family: 'Nanum Pen Script', cursive;

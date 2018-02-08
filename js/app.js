@@ -106,7 +106,7 @@ var checkNote = function () {
 		if (matchCount === level + 2) {
 			win();
 			console.log('win')
-			winNum ++;
+			// winNum ++;
 		}	
 	  
 	}
@@ -118,21 +118,10 @@ var levelUp = function () {
 	$('#next').removeClass('disabled');
 	$('#next').removeClass('pulse');
 	$('#next').addClass('disabled');
-	if (winNum > 0 && winNum < 5) {
+	if (winNum > 0 && winNum < 3) {
 		level ++;
 		startGame();
 	}
-
-	// if (winNum >= 5) {
-	// 	//final Win banner
-	// 	//re-start the game !!!!this is not restarting the game!!! need work
-	// 	$('#start').addClass('hide');
-	// 	$('#next').removeClass('hide');
-	// 	notesGiven = [];
-	// 	notesPlayed = [];
-	// 	level ++;
-	// 	startGame();
-	// }
 }
 
 
@@ -174,10 +163,42 @@ var win = function () {
 	for (var i = 0; i <= allNotes.length; i++) {
 			$('#' + allNotes[i]).off('click', dotClicked);
 		}
-	$('#start').addClass('hide');
-	$('#next').removeClass('hide');
-	$('#next').removeClass('disabled');
-	$('#next').addClass('pulse');
+
+	console.log('winNum: ' + winNum)
+	if (winNum < 3) {
+		$('#start').addClass('hide');
+		$('#next').removeClass('hide');
+		$('#next').removeClass('disabled');
+		$('#next').addClass('pulse');
+
+		console.log('in winNum < 3')
+	} 
+	if (winNum >= 3) {
+
+		$('#finalwin').removeClass('hide');
+		setTimeout(function() {
+			$('#finalwin').addClass('hide');
+		},3000)
+
+		level = 1;
+		winNum = 0;
+
+		console.log('reach high');
+		console.log('in winNum >= 3')
+
+		for (var i = 0; i <= allNotes.length; i++) {
+			$('#' + allNotes[i]).off('click', dotClicked);
+		}
+
+		setTimeout(function() {
+
+			$('#start').removeClass('disabled');
+			$('#start').addClass('pulse');
+			$('#start').removeClass('hide');
+			$('#next').addClass('hide');
+		},3000)
+
+	}
 }
 
 var startGame = function () {
@@ -187,6 +208,8 @@ var startGame = function () {
 	$('#start').removeClass('pulse')
 	clearAnimationClass();
 	giveNotes(level);
+
+
 	
 }
 
