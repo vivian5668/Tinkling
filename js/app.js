@@ -165,12 +165,12 @@ var win = function () {
 		$('#finalbg').addClass('falling');
 		setTimeout(function() {
 			$('#finalbg').removeClass('falling');
-		},3000)
+		},3000);
 
 		$('#congrats').removeClass('hide');
 		setTimeout(function() {
 			$('#congrats').addClass('hide');
-		},3000)
+		},3000);
 
 		level = 1;
 		winNum = 0;

@@ -18,7 +18,10 @@ img {
 }
 
 body {
-	background-image: url("../img/bg_wood.jpg");
+	-webkit-background-image: url("../img/bg_wood.jpg");
+  background-image: url("../img/bg_wood.jpg");
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
 	background-size: cover;
 	font-family: 'Nanum Pen Script', cursive;
 }
