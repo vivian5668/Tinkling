@@ -3,7 +3,7 @@
 <img width="481" alt="readme_pic" src="https://user-images.githubusercontent.com/35155255/36050996-7426a09e-0d9d-11e8-9abe-03ab1704f7ee.png">
 
 ## Introduction
-Attention music game lovers! Your piano keyboard has been replaced with loverly jumping dots! Listen to the given melody and re-play it by clicking on the colored dots. The game will start over if you miss one note. Complete all levels to become a music-dotting master! Play the game [here](https://github.com/vivian5668/Tinkling).
+Attention music game lovers! Your piano keyboard has been replaced with loverly jumping dots! Listen to the given melody and re-play it by clicking on the colored dots. The game will start over if you miss one note. Complete all levels to become a music-dotting master! Play the game [here](https://vivian5668.github.io/Tinkling/).
 
 ## Supported Browsers
 
