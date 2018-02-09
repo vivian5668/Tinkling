@@ -6,7 +6,7 @@ var notesGiven = [];
 var notesPlayed = [];
 var level = 1;
 var winNum = 0;
-
+var totalLevel = 5;
 
 // var n8Audio = new Audio('sounds/n1.mp3');
 var loadMusic = new Audio('sounds/opening.mp3');
@@ -70,7 +70,7 @@ var checkNote = function () {
 	//check  for match once a note is played, stop the game if there is an un-match
 	if (notesGiven.length >= notesPlayed.length) {	
 		for (var i = 0; i < notesPlayed.length; i++) {
-			if (notesPlayed[i] != notesGiven[i]) {
+			if (notesPlayed[i] !== notesGiven[i].toString()) { //toString is important!! somehow after array.splice or other methods, array elements become objects. but push 'id's gives strings in the array! 
 				fail();
 				return;
 				
@@ -81,7 +81,7 @@ var checkNote = function () {
 	if (notesGiven.length === notesPlayed.length) {
 		var matchCount = 0;
 		for (var i = 0; i < notesGiven.length; i++) {
-			if (notesPlayed[i] == notesGiven[i]) {
+			if (notesPlayed[i] === notesGiven[i].toString()) {
 				matchCount ++;
 		} 
 	}
@@ -100,7 +100,7 @@ var levelUp = function () {
 	$('#next').removeClass('disabled');
 	$('#next').removeClass('pulse');
 	$('#next').addClass('disabled');
-	if (winNum > 0 && winNum < 3) {
+	if (winNum > 0 && winNum < totalLevel) {
 		level ++;
 		startGame();
 	}
@@ -147,14 +147,14 @@ var win = function () {
 		}
 
 	console.log('winNum: ' + winNum)
-	if (winNum < 3) {
+	if (winNum < totalLevel) {
 		$('#start').addClass('hide');
 		$('#next').removeClass('hide');
 		$('#next').removeClass('disabled');
 		$('#next').addClass('pulse');
 
 	} 
-	if (winNum >= 3) {
+	if (winNum >= totalLevel) {
 
 		$('#cathappy').addClass('hide');
 		$('#finalbg').addClass('falling');
