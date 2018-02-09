@@ -26,11 +26,12 @@ var makeTimeoutFunction = function(id) {
 };
 
 var giveNotes = function (levelNum) {
-	var rand = Math.floor(Math.random()*8);
+	var rand;
 	var newArray = Array.from(allNotes); //initially has 8 elements
 	//randomly delete one, store in temp , now 7 left
 	//add temp to notesGiven, then repeat
 	for (var i = 0; i < 2 + levelNum; i++) {
+		rand = Math.floor(Math.random()*8);
 		temp = newArray.splice(rand-i, 1);
 		notesGiven.push(temp);
 	}
@@ -110,7 +111,9 @@ var levelUp = function () {
 var fail = function () {
 	level = 1;
 	winNum = 0;
-	document.getElementById('sadsound').play();
+	setTimeout(function() {
+		document.getElementById('sadsound').play();
+	}, 1000)
 	$('#catsad').remove(); // remove gif and re-add to make gif start at beginning each time
 	$('#catimg').append('<img class="responsive-img" id="catsad" src="img/sad.gif">'); // reload it
 	
@@ -135,7 +138,9 @@ var fail = function () {
 }
 
 var win = function () {
-	document.getElementById('happysound').play();
+	setTimeout(function() {
+		document.getElementById('happysound').play();
+	}, 1000);
 	$('#cathappy').removeClass('hide');
 	setTimeout(function() {
 		$('#cathappy').addClass('hide');
