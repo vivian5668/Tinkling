@@ -225,7 +225,13 @@ $(document).ready(function() {
 		levelUp();
 	});
 
-	document.getElementById('opening').play();
+	
+	function tapOrClick() {
+	     document.getElementById('opening').play();
+	}
+	document.getElementById('opening').addEventListener("mouseup", tapOrClick(), false);
+	document.getElementById('opening').addEventListener("touchend", tapOrClick(), false);
+
 	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
 	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
 	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
