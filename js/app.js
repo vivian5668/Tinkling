@@ -230,7 +230,7 @@ $(document).ready(function() {
 	     document.getElementById('opening').play();
 	}
 	document.getElementById('opening').addEventListener("mouseup", tapOrClick(), false);
-	document.getElementById('opening').addEventListener("touchend", tapOrClick(), false);
+	document.getElementById('opening').addEventListener("touchstart", tapOrClick(), false);
 
 	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
 	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
