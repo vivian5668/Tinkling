@@ -9,7 +9,7 @@ var winNum = 0;
 var totalLevel = 5;
 
 // var n8Audio = new Audio('sounds/n1.mp3');
-var loadMusic = new Audio('sounds/opening.mp3');
+// var loadMusic = new Audio('sounds/opening.mp3');
 
 var time = 900;
 var element = null;
@@ -193,7 +193,7 @@ var win = function () {
 }
 
 var startGame = function () {
-	loadMusic.pause();
+	document.getElementById('opening').pause();
 	notesGiven = [];
 	notesPlayed = [];
 	$('#start').removeClass('pulse')
@@ -225,7 +225,7 @@ $(document).ready(function() {
 		levelUp();
 	});
 
-	loadMusic.play();
+	document.getElementById('opening').play();
 	setTimeout(function() {$('#n1').addClass('dotjump');}, 100);
 	setTimeout(function() {$('#n2').addClass('dotjump');}, 200);
 	setTimeout(function() {$('#n3').addClass('dotjump');}, 300);
