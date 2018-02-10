@@ -6,7 +6,7 @@ var notesGiven = [];
 var notesPlayed = [];
 var level = 1;
 var winNum = 0;
-var totalLevel = 2;
+var totalLevel = 5;
 
 // var n8Audio = new Audio('sounds/n1.mp3');
 var loadMusic = new Audio('sounds/opening.mp3');
